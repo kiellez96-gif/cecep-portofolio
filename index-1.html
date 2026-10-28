@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080d19">
+  <meta name="description" content="Portofolio Cecep — pelajar yang sedang belajar teknologi, komputer, jaringan, dan web.">
+  <title>CECEP — Portofolio Digital</title>
+  <style>
+    :root{
+      color-scheme:dark;
+      --bg:#080d19;--surface:#10182a;--surface2:#141f35;--text:#f4f7ff;
+      --muted:#a3b0ca;--accent:#9b8cff;--accent2:#57e4c2;--line:rgba(255,255,255,.12);
+      --shadow:0 24px 70px rgba(0,0,0,.28);--header:rgba(8,13,25,.82)
+    }
+    body.light{
+      color-scheme:light;--bg:#f4f6fc;--surface:#fff;--surface2:#edf1fb;--text:#172039;
+      --muted:#5e6982;--accent:#6249e8;--accent2:#078f79;--line:rgba(23,32,57,.13);
+      --shadow:0 20px 55px rgba(35,48,83,.12);--header:rgba(244,246,252,.86)
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:88px}
+    body{margin:0;background:radial-gradient(ellipse at 80% 0%,color-mix(in srgb,var(--accent) 17%,transparent),transparent 35%),radial-gradient(ellipse at 5% 35%,color-mix(in srgb,var(--accent2) 9%,transparent),transparent 30%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.65;transition:background .25s,color .25s}
+    a{color:inherit;text-decoration:none}button{font:inherit}
+    .progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));z-index:30}
+    .wrap{width:min(1100px,calc(100% - 38px));margin-inline:auto}
+    header{position:sticky;top:0;z-index:20;background:var(--header);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+    nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .brand{font-size:1.22rem;font-weight:950;letter-spacing:.07em}.brand span{color:var(--accent2)}
+    .nav-right,.navlinks{display:flex;align-items:center;gap:19px}
+    .navlinks{color:var(--muted);font-size:.92rem}.navlinks a:hover,.navlinks a.active{color:var(--accent2)}
+    .icon-btn{width:42px;height:42px;border:1px solid var(--line);border-radius:13px;background:var(--surface);color:var(--text);display:grid;place-items:center;cursor:pointer}
+    .hero{min-height:78vh;display:grid;grid-template-columns:1.35fr .65fr;align-items:center;gap:56px;padding:78px 0 70px}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;padding:7px 12px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:.84rem;background:var(--surface)}
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--accent2);box-shadow:0 0 14px var(--accent2)}
+    h1{font-size:clamp(3.2rem,8vw,6.2rem);line-height:.98;letter-spacing:-.07em;margin:24px 0}
+    .gradient{background:linear-gradient(100deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .intro{max-width:600px;color:var(--muted);font-size:1.08rem}
+    .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:12px 18px;border-radius:13px;font-weight:800;border:1px solid var(--line);transition:transform .2s,filter .2s;cursor:pointer}
+    .btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
+    .primary{background:linear-gradient(110deg,var(--accent),#5e8bff);color:#fff;border:0;box-shadow:0 10px 26px color-mix(in srgb,var(--accent) 23%,transparent)}
+    .secondary{background:var(--surface)}
+    .profile-card{position:relative;padding:25px;border:1px solid var(--line);border-radius:28px;background:linear-gradient(150deg,color-mix(in srgb,var(--accent) 16%,var(--surface)),color-mix(in srgb,var(--accent2) 7%,var(--surface)));box-shadow:var(--shadow);overflow:hidden}
+    .profile-card:before{content:"";position:absolute;width:170px;height:170px;border-radius:50%;right:-65px;top:-70px;background:var(--accent);opacity:.13;filter:blur(8px)}
+    .avatar{position:relative;width:100%;aspect-ratio:1.1;display:grid;place-items:center;border-radius:21px;background:linear-gradient(135deg,var(--accent),var(--accent2));font-size:clamp(5rem,12vw,8rem);font-weight:950;color:#09101d;letter-spacing:-.1em}
+    .profile-card h2{margin:17px 0 0}.profile-card p{margin:0;color:var(--muted)}
+    .mini-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:17px}
+    .tag{display:inline-flex;font-size:.76rem;color:var(--muted);border:1px solid var(--line);border-radius:8px;padding:4px 9px;background:color-mix(in srgb,var(--surface) 65%,transparent)}
+    .quick-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:36px;max-width:560px}
+    .stat{padding:13px 15px;border:1px solid var(--line);border-radius:15px;background:var(--surface)}
+    .stat strong{display:block;font-size:1.12rem}.stat span{display:block;color:var(--muted);font-size:.78rem}
+    section.section{padding:60px 0}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:26px}
+    .kicker{color:var(--accent2);font-size:.78rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase}
+    h2{font-size:clamp(1.8rem,4vw,2.65rem);line-height:1.15;letter-spacing:-.045em;margin:8px 0}
+    .sub{color:var(--muted);max-width:510px;margin:0}
+    .about-grid,.skills-grid,.project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}
+    .panel,.skill,.project{border:1px solid var(--line);background:color-mix(in srgb,var(--surface) 92%,transparent);border-radius:21px;padding:24px}
+    .panel p{color:var(--muted);margin-bottom:0}
+    .panel .symbol,.skill .symbol{font-size:1.5rem}
+    .skill{padding:21px;transition:transform .2s,border-color .2s}
+    .skill:hover{transform:translateY(-4px);border-color:var(--accent)}
+    .skill h3{margin:9px 0 4px}.skill p{color:var(--muted);font-size:.92rem;margin:0}
+    .project-tools{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px}
+    .filter{padding:8px 13px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted);cursor:pointer;font-size:.86rem}
+    .filter.active,.filter:hover{background:var(--accent);color:#fff;border-color:transparent}
+    .project-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .project{padding:0;overflow:hidden;transition:transform .2s,border-color .2s;display:flex;flex-direction:column}
+    .project:hover{transform:translateY(-5px);border-color:var(--accent)}
+    .project[hidden]{display:none}
+    .project-art{height:150px;display:grid;place-items:center;font-size:2.7rem;background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 43%,var(--surface)),color-mix(in srgb,var(--accent2) 24%,var(--surface)));position:relative;overflow:hidden}
+    .project-art:after{content:"";position:absolute;width:120px;height:120px;border:1px solid rgba(255,255,255,.22);border-radius:30px;transform:rotate(35deg)}
+    .project-art span{position:relative;z-index:1}
+    .project-body{padding:20px;display:flex;flex-direction:column;align-items:flex-start;flex:1}
+    .project-body h3{margin:0}.project-body p{font-size:.9rem;color:var(--muted);margin:8px 0 16px}
+    .project-body .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto}
+    .contact{display:flex;align-items:center;justify-content:space-between;gap:28px;padding:32px;border:1px solid var(--line);border-radius:25px;background:linear-gradient(110deg,color-mix(in srgb,var(--accent) 14%,var(--surface)),color-mix(in srgb,var(--accent2) 8%,var(--surface)))}
+    .contact p{color:var(--muted);margin-bottom:0}
+    .contact-actions{display:flex;gap:10px;flex-wrap:wrap}
+    footer{padding:28px 0;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);margin-top:45px}
+    footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .top-btn{position:fixed;right:18px;bottom:18px;width:46px;height:46px;border-radius:15px;border:1px solid var(--line);background:var(--surface2);color:var(--text);box-shadow:var(--shadow);cursor:pointer;display:none;z-index:15}
+    .top-btn.show{display:block}
+    .reveal{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
+    .reveal.visible{opacity:1;transform:none}
+    .toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);background:var(--text);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:.9rem;opacity:0;pointer-events:none;transition:.25s;z-index:40}
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+    @media(max-width:780px){
+      .hero{grid-template-columns:1fr;gap:30px;padding:56px 0}.profile-card{max-width:440px}
+      .project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .section-head{align-items:flex-start;flex-direction:column}
+      .contact{align-items:flex-start;flex-direction:column}
+    }
+    @media(max-width:560px){
+      .wrap{width:min(100% - 28px,1100px)}nav{min-height:64px}
+      .nav-right{gap:8px}.navlinks{gap:11px;font-size:.78rem;flex-wrap:wrap;justify-content:flex-end}
+      .icon-btn{width:38px;height:38px}.hero{min-height:auto;padding:50px 0}
+      .quick-stats{gap:8px}.stat{padding:11px}.stat strong{font-size:1rem}.stat span{font-size:.7rem}
+      .project-grid,.about-grid,.skills-grid{grid-template-columns:1fr}
+      section.section{padding:45px 0}.contact{padding:24px}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}*,*:before,*:after{animation:none!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+  <header>
+    <nav class="wrap" aria-label="Navigasi utama">
+      <a class="brand" href="#home">CECEP<span>.</span></a>
+      <div class="nav-right">
+        <div class="navlinks">
+          <a href="#about">Tentang</a><a href="#skills">Skill</a><a href="#projects">Proyek</a><a href="#contact">Kontak</a>
+        </div>
+        <button class="icon-btn" id="themeToggle" aria-label="Ganti tema" title="Ganti tema">☼</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero wrap" id="home">
+      <div class="reveal">
+        <div class="eyebrow"><span class="dot"></span> Portofolio pribadi · Sedang berkembang</div>
+        <h1>Halo, aku<br><span class="gradient">Cecep.</span></h1>
+        <p class="intro">Aku sedang belajar, bereksperimen, dan membangun hal-hal baru di dunia teknologi. Di sini kamu bisa melihat perjalanan belajarku, keterampilan, dan proyek yang sedang kukembangkan.</p>
+        <div class="actions">
+          <a class="btn primary" href="#projects">Jelajahi proyek <span aria-hidden="true">↗</span></a>
+          <a class="btn secondary" href="#contact">Kenalan lebih lanjut</a>
+        </div>
+        <div class="quick-stats">
+          <div class="stat"><strong>04</strong><span>Area belajar</span></div>
+          <div class="stat"><strong>01+</strong><span>Proyek web</span></div>
+          <div class="stat"><strong>∞</strong><span>Rasa penasaran</span></div>
+        </div>
+      </div>
+      <aside class="profile-card reveal">
+        <div class="avatar" aria-label="Inisial Cecep">C.</div>
+        <h2>Cecep</h2>
+        <p>Pelajar · Tech enthusiast</p>
+        <div class="mini-tags"><span class="tag">Terus belajar</span><span class="tag">Kreatif</span><span class="tag">Teknologi</span></div>
+      </aside>
+    </section>
+
+    <section class="section wrap" id="about">
+      <div class="section-head reveal"><div><div class="kicker">01 / Tentang</div><h2>Mulai dari rasa penasaran.</h2></div><p class="sub">Belajar sedikit demi sedikit, lalu mengubah pengetahuan menjadi sesuatu yang bisa dicoba.</p></div>
+      <div class="about-grid">
+        <article class="panel reveal"><div class="symbol">✦</div><h3>Siapa aku?</h3><p>Aku Cecep. Aku suka mempelajari hal baru dan mencoba mengubah ide menjadi sesuatu yang bisa digunakan. Portofolio ini menjadi tempat untuk mendokumentasikan proses dan hasil belajarku.</p></article>
+        <article class="panel reveal"><div class="symbol">⌁</div><h3>Fokus saat ini</h3><p>Memahami komputer, jaringan lokal, dan pengembangan web. Aku ingin terus meningkatkan kemampuan lewat latihan dan proyek kecil yang bermanfaat.</p></article>
+      </div>
+    </section>
+
+    <section class="section wrap" id="skills">
+      <div class="section-head reveal"><div><div class="kicker">02 / Keterampilan</div><h2>Hal yang sedang kupelajari.</h2></div><p class="sub">Ini adalah area belajar, bukan klaim ahli. Daftarnya bisa diperbarui seiring bertambahnya pengalaman.</p></div>
+      <div class="skills-grid">
+        <article class="skill reveal"><div class="symbol">⌘</div><h3>Komputer & troubleshooting</h3><p>Mengenal perangkat komputer, sistem, dan langkah dasar mencari penyebab masalah.</p></article>
+        <article class="skill reveal"><div class="symbol">⌁</div><h3>Jaringan dasar</h3><p>Belajar IP address, jaringan lokal, koneksi perangkat, dan konfigurasi dasar.</p></article>
+        <article class="skill reveal"><div class="symbol">✳</div><h3>Desain digital</h3><p>Mencoba tata letak, warna, dan komposisi agar tampilan lebih rapi dan mudah dipakai.</p></article>
+        <article class="skill reveal"><div class="symbol">⟨/⟩</div><h3>Web development</h3><p>Membangun halaman dengan HTML, CSS, JavaScript, dan mencoba server lokal Flask.</p></article>
+      </div>
+    </section>
+
+    <section class="section wrap" id="projects">
+      <div class="section-head reveal"><div><div class="kicker">03 / Proyek</div><h2>Proyek pilihan.</h2></div><p class="sub">Pilih kategori untuk menyaring proyek. Kartu contoh ini bisa diganti dengan proyek asli saat sudah siap.</p></div>
+      <div class="project-tools reveal" role="group" aria-label="Filter proyek">
+        <button class="filter active" data-filter="all">Semua</button>
+        <button class="filter" data-filter="web">Web</button>
+        <button class="filter" data-filter="network">Jaringan</button>
+        <button class="filter" data-filter="computer">Komputer</button>
+      </div>
+      <div class="project-grid" id="projectGrid">
+        <article class="project reveal" data-category="computer"><div class="project-art"><span>⌘</span></div><div class="project-body"><h3>Catatan Komputer</h3><p>Kumpulan catatan belajar perangkat komputer dan troubleshooting dasar.</p><div class="tags"><span class="tag">Komputer</span><span class="tag">Pemula</span></div></div></article>
+        <article class="project reveal" data-category="network"><div class="project-art"><span>⌁</span></div><div class="project-body"><h3>Lab Jaringan</h3><p>Latihan memahami IP address, koneksi lokal, dan konfigurasi perangkat.</p><div class="tags"><span class="tag">Jaringan</span><span class="tag">TKJ</span></div></div></article>
+        <article class="project reveal" data-category="web"><div class="project-art"><span>✳</span></div><div class="project-body"><h3>Website CECEP</h3><p>Portofolio pribadi yang dibuat dengan HTML, CSS, JavaScript, dan Flask lokal.</p><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Flask</span></div></div></article>
+      </div>
+    </section>
+
+    <section class="section wrap" id="contact">
+      <div class="contact reveal">
+        <div><div class="kicker">04 / Kontak</div><h2>Mari terhubung.</h2><p>Ingin ngobrol soal teknologi atau proyek? Tambahkan alamat emailmu di kode website agar tombol kontak bisa dipakai.</p></div>
+        <div class="contact-actions">
+          <button class="btn primary" id="copyEmail">Salin email ↗</button>
+          <a class="btn secondary" href="#home">Kembali ke atas ↑</a>
+        </div>
+      </div>
+      <p style="color:var(--muted);font-size:.85rem;margin:12px 4px 0">Pengaturan email ada di variabel <code>CONTACT_EMAIL</code> pada bagian JavaScript di bawah.</p>
+    </section>
+  </main>
+
+  <footer><div class="wrap"><span>© <span id="year"></span> CECEP · Dibuat sambil terus belajar.</span><a href="#home">Kembali ke awal ↑</a></div></footer>
+  <button class="top-btn" id="topBtn" aria-label="Kembali ke atas" title="Kembali ke atas">↑</button>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    // Ganti dengan email milikmu sebelum menggunakan tombol salin email.
+    const CONTACT_EMAIL = "emailkamu@example.com";
+
+    const body = document.body;
+    const themeToggle = document.getElementById("themeToggle");
+    themeToggle.addEventListener("click", () => {
+      body.classList.toggle("light");
+      const light = body.classList.contains("light");
+      themeToggle.textContent = light ? "☾" : "☼";
+      document.querySelector('meta[name="theme-color"]').content = light ? "#f4f6fc" : "#080d19";
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const progress = document.getElementById("progress");
+    const topBtn = document.getElementById("topBtn");
+    function onScroll(){
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = (max > 0 ? window.scrollY / max * 100 : 0) + "%";
+      topBtn.classList.toggle("show", window.scrollY > 450);
+    }
+    window.addEventListener("scroll", onScroll, {passive:true});
+    onScroll();
+    topBtn.addEventListener("click", () => window.scrollTo({top:0,behavior:"smooth"}));
+
+    const filterButtons = document.querySelectorAll(".filter");
+    const projects = document.querySelectorAll(".project");
+    filterButtons.forEach(button => button.addEventListener("click", () => {
+      filterButtons.forEach(item => item.classList.toggle("active", item === button));
+      const filter = button.dataset.filter;
+      projects.forEach(project => {
+        project.hidden = filter !== "all" && project.dataset.category !== filter;
+      });
+    }));
+
+    const toast = document.getElementById("toast");
+    let toastTimeout;
+    function showToast(message){
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => toast.classList.remove("show"), 2300);
+    }
+    document.getElementById("copyEmail").addEventListener("click", async () => {
+      if (!CONTACT_EMAIL || CONTACT_EMAIL === "emailkamu@example.com") {
+        showToast("Edit CONTACT_EMAIL di kode dengan emailmu dulu.");
+        return;
+      }
+      try {
+        await navigator.clipboard.writeText(CONTACT_EMAIL);
+        showToast("Email berhasil disalin.");
+      } catch {
+        showToast("Email kamu: " + CONTACT_EMAIL);
+      }
+    });
+
+    const revealItems = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {threshold:0.12});
+      revealItems.forEach(item => observer.observe(item));
+    } else {
+      revealItems.forEach(item => item.classList.add("visible"));
+    }
+
+    const sections = [...document.querySelectorAll("main section[id]")];
+    const navLinks = [...document.querySelectorAll(".navlinks a")];
+    if ("IntersectionObserver" in window) {
+      const navObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            navLinks.forEach(link => link.classList.toggle("active", link.getAttribute("href") === "#" + entry.target.id));
+          }
+        });
+      }, {rootMargin:"-30% 0px -60% 0px"});
+      sections.forEach(section => navObserver.observe(section));
+    }
+  </script>
+</body>
+</html>
